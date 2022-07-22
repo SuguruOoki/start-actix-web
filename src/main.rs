@@ -1,4 +1,4 @@
-use actix_web::{get, web, App, HttpServer};
+use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
 
 // #[get("/{id}/{name}/index.html")]
 // async fn index(web::Path((id, name)): web::Path<(u32, String)>) -> impl Responder {
@@ -63,3 +63,8 @@ struct AppState {
 // async fn manual_hello() -> impl Responder {
 //     HttpResponse::Ok().body("Hey there!aaa")
 // }
+
+#[post("/echo")]
+async fn echo(req_body: String) -> impl Responder {
+    HttpResponse::Ok().body(req_body)
+}
